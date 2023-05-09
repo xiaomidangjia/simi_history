@@ -196,6 +196,7 @@ mpf.plot(last_7day_data,
          savefig=filename_1
          )
 plt.show()
+min_simi_date = np.min(simi_date)
 simi_df = res_data[res_data.date>=min_simi_date]
 pre_simi_df = simi_df.reset_index(drop=True)
 simi_df = pre_simi_df[0:14]
@@ -252,7 +253,6 @@ plt.show()
 # coding=utf-8
 from PIL import Image, ImageDraw, ImageFont
 import cv2
-import numpy as np
 
 
 def jigsaw(imgs, direction, gap=0):
@@ -270,7 +270,7 @@ def jigsaw(imgs, direction, gap=0):
         raise ValueError("The direction parameter has only two options: horizontal and vertical")
     return np.array(result)
 
-
+if
 img1 = cv2.imread("fig_1.jpg")
 img2 = cv2.imread("fig_2.jpg")
 img = jigsaw([img1, img2],direction="vertical")
