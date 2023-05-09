@@ -270,16 +270,16 @@ def jigsaw(imgs, direction, gap=0):
         raise ValueError("The direction parameter has only two options: horizontal and vertical")
     return np.array(result)
 
-img1 = cv2.imread("fig_1.jpg")
-img2 = cv2.imread("fig_2.jpg")
+img1 = cv2.imread("/root/simi_history/fig_1.jpg")
+img2 = cv2.imread("/root/simi_history/fig_2.jpg")
 img = jigsaw([img1, img2],direction="vertical")
-name = '比特币近14天价格变化历史走势最相似时间' + '.png'
+name = '/root/simi_history' + '比特币近14天价格变化历史走势最相似时间' + '.png'
 cv2.imwrite(name, img)
 
 
 
 import telegram
-content = '/root/simi_history/' + name
+#content = '/root/simi_history/' + name
 bot = telegram.Bot(token='6219784883:AAE3YXlXvxNArWJu-0qKpKlhm4KaTSHcqpw')
 
 text = '【历史相似行情提示】：%s-%s比特币价格走势与历史%s-%s比特币价格走势最相似，相似度为%s。'%(start_date,end_date,start_date_p,end_date_p,round(np.max(value),2))
