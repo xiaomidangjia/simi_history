@@ -270,7 +270,6 @@ def jigsaw(imgs, direction, gap=0):
         raise ValueError("The direction parameter has only two options: horizontal and vertical")
     return np.array(result)
 
-if
 img1 = cv2.imread("fig_1.jpg")
 img2 = cv2.imread("fig_2.jpg")
 img = jigsaw([img1, img2],direction="vertical")
