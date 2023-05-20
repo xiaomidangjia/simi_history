@@ -8,7 +8,7 @@ import re
 from tqdm import tqdm
 import datetime
 from dingtalkchatbot.chatbot import DingtalkChatbot
-webhook = 'https://oapi.dingtalk.com/robot/send?access_token=a9789d2739819eab19b07dcefe30df3fcfd9f815bf198ced54c71c557f09e7d9'
+webhook = 'https://oapi.dingtalk.com/robot/send?access_token=69d2f134c31ced0426894ed975f29b519c1a8bd163a808840ef5812c5a0477a1'
 from qiniu import Auth, put_file, etag
 def gmt_img_url(key=None,local_file=None,**kwargs):
     # refer:https://developer.qiniu.com/kodo/sdk/1242/python
@@ -312,7 +312,7 @@ import telegram
 #content = '/root/simi_history/' + name
 bot = telegram.Bot(token='6219784883:AAE3YXlXvxNArWJu-0qKpKlhm4KaTSHcqpw')
 
-text = '【历史相似行情提示】：%s至%s比特币价格走势与历史%s至%s比特币价格走势最相似，相似度为%s。'%(start_date,end_date,start_date_p,end_date_p,round(np.max(value),2))
+text = '【历史相似行情提示】：%s至%s大饼价格走势与历史%s至%s大饼价格走势最相似，相似度为%s。'%(start_date,end_date,start_date_p,end_date_p,round(np.max(value),2))
 
 bot.sendDocument(chat_id='-840309715', document=open(name, 'rb'))
 bot.sendMessage(chat_id='-840309715', text=text)
@@ -324,10 +324,10 @@ img_url = gmt_img_url(key=key, local_file=name)
 
 xiaoding = DingtalkChatbot(webhook)
 txt = '【历史相似行情提示】 @所有人\n' \
-      '> %s至%s比特币价格走势与历史%s至%s比特币价格走势最相似。\n\n' \
+      '> %s至%s大饼价格走势与历史%s至%s大饼价格走势最相似。\n\n' \
       '> 相似度：%s \n\n'\
       '> ![数据监控结果](%s)\n'\
-      '> ###### 币coin搜索0xCarson,关注欧易实盘。 \n'%(start_date,end_date,start_date_p,end_date_p,round(np.max(value),2),img_url)
+      '> ###### 币coin搜索0xCarson,关注OKX实盘。 \n'%(start_date,end_date,start_date_p,end_date_p,round(np.max(value),2),img_url)
 xiaoding.send_markdown(title='数据监控', text=txt);
 
 
