@@ -5,7 +5,6 @@ import time
 import numpy as np
 import os
 import re
-from tqdm import tqdm
 import datetime
 from dingtalkchatbot.chatbot import DingtalkChatbot
 webhook = 'https://oapi.dingtalk.com/robot/send?access_token=69d2f134c31ced0426894ed975f29b519c1a8bd163a808840ef5812c5a0477a1'
@@ -128,7 +127,6 @@ for i in range(0,len(compare_data_2)-14):
     value.append(p[0])
 maxid = value.index(np.max(value))
 simi_data = data_list[maxid]
-simi_date = date_list[maxid]
 last_7day_data['Open'] = last_7day_data['open']
 last_7day_data['Close'] = last_7day_data['close']
 last_7day_data['High'] = last_7day_data['high']
@@ -280,6 +278,59 @@ mpf.plot(simi_df,
          savefig=filename_2
          )
 plt.show()
+
+
+filename_3 = 'fig_3.jpg'
+start_date_w = np.max(simi_df['date'])
+end_date_w = start_date_w + datetime.timedelta(days=7)
+
+next_df = res_data[(res_data.date > start_date_w) & (res_data.date <= end_date_w)]
+
+type_bk_2 ='%s - %s BTC OHLC Candles'%(str(start_date_w)[0:10],str(end_date_w)[0:10])
+mc = mpf.make_marketcolors(
+    up='red',
+    down='green',
+    edge='i',
+    wick='i',
+    volume='in',
+    inherit=True)
+
+# 设置图形风格
+s = mpf.make_mpf_style(
+    gridaxis='both',
+    gridstyle='-.',
+    y_on_right=False,
+    marketcolors=mc,
+    #mavcolors=['yellow','blue']
+)
+
+kwargs = dict(
+    type='candle',
+    #mav=(5, 10),
+    volume=False,
+    title=type_bk_2,
+    ylabel='Price',
+    ylabel_lower='Traded Volume',
+    figratio=(25, 10),
+    figscale=1
+    )
+
+#add_plot = mpf.make_addplot(sub_ins[['lowerB','upperB','middleB']])
+#draw_bk(type_bk, filename,sub_ins)
+mpl.rcParams['axes.prop_cycle'] = cycler(
+    color=['dodgerblue','teal'])
+
+# 设置线宽
+mpl.rcParams['lines.linewidth'] = 0.5
+mpf.plot(next_df,
+         **kwargs,
+         style=s,
+         show_nontrading=False,
+         #addplot = add_plot,
+         savefig=filename_3
+         )
+plt.show()
+
 # coding=utf-8
 from PIL import Image, ImageDraw, ImageFont
 import cv2
@@ -302,7 +353,8 @@ def jigsaw(imgs, direction, gap=0):
 
 img1 = cv2.imread("/root/simi_history/fig_1.jpg")
 img2 = cv2.imread("/root/simi_history/fig_2.jpg")
-img = jigsaw([img1, img2],direction="vertical")
+img3 = cv2.imread("/root/simi_history/fig_3.jpg")
+img = jigsaw([img1, img2,img3],direction="vertical")
 name = '/root/simi_history/' + '比特币近14天价格变化历史走势最相似时间' + '.png'
 cv2.imwrite(name, img)
 
