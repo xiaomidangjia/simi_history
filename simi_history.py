@@ -126,7 +126,7 @@ for i in range(0,len(compare_data_2)-14):
     #print(p)
     value.append(p[0])
 maxid = value.index(np.max(value))
-simi_data = data_list[maxid]
+simi_date = data_list[maxid]
 last_7day_data['Open'] = last_7day_data['open']
 last_7day_data['Close'] = last_7day_data['close']
 last_7day_data['High'] = last_7day_data['high']
