@@ -282,10 +282,10 @@ plt.show()
 
 
 filename_3 = 'fig_3.jpg'
-start_date_w = np.max(simi_df['date'])
+start_date_w = np.max(simi_df['date']) + datetime.timedelta(days=1)
 end_date_w = start_date_w + datetime.timedelta(days=7)
 
-next_df = res_data[(res_data.date > start_date_w) & (res_data.date <= end_date_w)]
+next_df = res_data[(res_data.date >= start_date_w) & (res_data.date <= end_date_w)]
 next_df = next_df.set_index(next_df['date'])
 type_bk_2 ='%s - %s BTC OHLC Candles'%(str(start_date_w)[0:10],str(end_date_w)[0:10])
 mc = mpf.make_marketcolors(
