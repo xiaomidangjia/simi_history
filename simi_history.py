@@ -365,7 +365,7 @@ cv2.imwrite(name, img)
 text = '【历史相似行情提示】：%s至%s大饼价格走势与历史%s至%s大饼价格走势最相似，相似度为%s。'%(start_date,end_date,start_date_p,end_date_p,round(np.max(value),2))
 
 bot.sendDocument(chat_id='-1001975215255', document=open(name, 'rb'),message_thread_id=5)
-bot.sendMessage(chat_id='-1001975215255', text=text)
+bot.sendMessage(chat_id='-1001975215255', text=text,message_thread_id=5)
 
 
 
