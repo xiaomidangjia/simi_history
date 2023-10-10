@@ -8,7 +8,7 @@ import re
 import datetime
 from telegram import ParseMode
 import telegram
-bot = telegram.Bot(token='6343206405:AAHkaKIXCMvif0yqkzvTYWasYPEIsTmImgQ')
+bot = telegram.Bot(token='6361430672:AAG2qr7zuFQkcQb13Xtud2q8KksonuTNVN4')
 from qiniu import Auth, put_file, etag
 def gmt_img_url(key=None,local_file=None,**kwargs):
     # refer:https://developer.qiniu.com/kodo/sdk/1242/python
@@ -364,8 +364,8 @@ cv2.imwrite(name, img)
 
 text = '【历史相似行情提示】：%s至%s大饼价格走势与历史%s至%s大饼价格走势最相似，相似度为%s。'%(start_date,end_date,start_date_p,end_date_p,round(np.max(value),2))
 
-bot.sendDocument(chat_id='-1001975215255', document=open(name, 'rb'),message_thread_id=5)
-bot.sendMessage(chat_id='-1001975215255', text=text,message_thread_id=5)
+bot.sendDocument(chat_id='-1001920263299', document=open(name, 'rb'),message_thread_id=5)
+bot.sendMessage(chat_id='-1001920263299', text=text,message_thread_id=5)
 
 
 
